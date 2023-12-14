@@ -1,6 +1,7 @@
-from main import app
 from fastapi.testclient import TestClient
 import pytest
+
+from python_todomvc.main import app
 
 
 @pytest.fixture
