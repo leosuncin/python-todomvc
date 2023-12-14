@@ -15,6 +15,7 @@ gunicorn = "^21.2.0"
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.1.8"
 bandit = "^1.7.6"
+safety = "^2.3.5"
 
 [build-system]
 requires = ["poetry-core"]
