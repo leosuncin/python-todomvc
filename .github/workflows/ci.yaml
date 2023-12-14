@@ -25,6 +25,8 @@ jobs:
         run: poetry install --without test
       - name: Run ruff 🧪
         run: poetry run ruff check --select F,W,E .
+      - name: Run mypy 🧪
+        run: poetry run mypy .
       - name: Run bandit 🧪
         run: poetry run bandit .
       - name: Run safety 🧪
