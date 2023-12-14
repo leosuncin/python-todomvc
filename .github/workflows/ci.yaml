@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  code-quality:
+    name: Run Code Quality checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v4
+      - name: Setup Python 🐍
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
+      - name: Setup poetry 🧰
+        uses: abatilo/actions-poetry@v2
+        with:
+          poetry-version: 1.7.1
+      - name: Install dependencies 📦
+        run: poetry install --without test
+      - name: Run ruff 🧪
+        run: poetry run ruff check --select F,W,E .
+      - name: Run bandit 🧪
+        run: poetry run bandit .
+      - name: Run safety 🧪
+        run: poetry run safety check
