@@ -8,6 +8,6 @@ class Greet(BaseModel):
     message: str
 
 
-@app.get("/greeting", response_model=Greet)
-def say_hi(name: str = "World"):
-    return {"message": f"Hello {name}"}
+@app.get("/greeting")
+def say_hi(name: str = "World") -> Greet:
+    return Greet(message=f"Hello {name}")
